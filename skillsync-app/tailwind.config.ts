@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         customGreen: '#399A6D',
+        customGrey: 'rgba(217, 217, 217, 0.5)',
       },
       fontFamily: {
         'neue-haas': ['"Neue Haas Grotesk Display Pro"', 'sans-serif'],

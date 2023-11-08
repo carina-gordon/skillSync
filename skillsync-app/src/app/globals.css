@@ -16,10 +16,21 @@
   }
 }
 
+/* styles/globals.css */
 @font-face {
   font-family: 'Neue Haas Grotesk Display Pro';
-  src: url(/skillsync-app/fonts/NeueHaasDisplay-Mediu.9f5986f7.ttf)
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/NeueHaasDisplay-Roman.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/NeueHaasDisplay-Mediu.9f5986f7.ttf') format('truetype');
+}
+
 
 body {
   color: rgb(var(--foreground-rgb));
