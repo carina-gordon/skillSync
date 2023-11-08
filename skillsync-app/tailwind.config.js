@@ -16,7 +16,18 @@ module.exports = {
       },
     },
     extend: {
+
+      fontFamily: {
+        'neue-haas': ['"Neue Haas Grotesk Display Pro"', 'sans-serif'],
+      },
+      fontWeight: {
+        'medium': '500',
+      },
+      lineHeight: {
+        'normal': 'normal',
+      },
       colors: {
+        customGreen: '#399A6D',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
