@@ -11,24 +11,29 @@ import HeroText from '@/components/heroText';
 import { analytics } from '@/lib/firebase'; // Adjust the path to where your firebase.js file is located
 
 export default function Home() {
-  // No need to initialize Firebase here, it's done in firebase.js
-  // This is page 1 of the onboarding process
   return (
-    <div>
-      <SkillSyncLogo size='large' />
+    <> 
+      <div className="flex flex-col items-center justify-center">
+        {/* idk if my tailwind isnt working, but i have to do margin like this, fix later */}
+        <div className="my-24"></div>
 
+        <SkillSyncLogo size='large' />
+        <div className="my-4"></div>
 
-      <HeroText/>
+        <HeroText/>
+        <div className="my-3"></div>
 
-      <div className = "flex justify-center items-center">
         <Link href="/2-role_input" passHref>
             <ContinueButton number="1" />
         </Link>
 
+        <div className = "flex flex-row items-center mt-24 lg:px-32" >
+          <FeatureText/>
+        </div>
+
+        <div className="my-24"></div>
+
       </div>
-
-      <FeatureText/>
-
-    </div>
+    </>
   );
 }

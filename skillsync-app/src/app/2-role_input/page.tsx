@@ -3,18 +3,24 @@
 import Image from 'next/image'
 import ContinueButton from '@/components/ContinueButton';
 import Link from 'next/link'
+import HeaderText from '@/components/HeaderText';
+import FormComponent from './components/form_component';
+import SkillSyncLogo from '@/components/skillsyncLogo';
 
 export default function RoleInput() {
 
   return (
     <div>
-      <Image src="/your-image.png" alt="Your Image" width={500} height={300} />
-      {/* ...other components */}
-      
-      <h1>Role Input Page</h1>
-      <Link href="/3-show_roles">
-            <ContinueButton number = "2" />
-      </Link>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className='absolute top-0 pt-12'>
+          <SkillSyncLogo size='medium' />
+        </div>
+        
+        <HeaderText text='What brings you here?' size='large'/>
+        <div className="my-4"></div>
+        <FormComponent/>
+
+      </div>
     </div>
   );
 }
