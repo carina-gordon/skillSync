@@ -7,7 +7,7 @@ import HeaderText from '@/components/HeaderText';
 import FormComponent from './components/form_component';
 import SkillSyncLogo from '@/components/skillsyncLogo';
 
-export default function RoleInput() {
+export default function inputYourRole() {
 
   return (
     <div>
@@ -15,7 +15,6 @@ export default function RoleInput() {
         <div className='absolute top-0 pt-12'>
           <SkillSyncLogo size='medium' />
         </div>
-        
         <HeaderText text='What brings you here?' size='large'/>
         <div className="my-4"></div>
         <FormComponent/>

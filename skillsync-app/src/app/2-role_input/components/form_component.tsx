@@ -2,15 +2,29 @@ import React, { useState } from 'react';
 import CustomInput from './input';
 import Link from 'next/link';
 import ContinueButton from '@/components/ContinueButton';
+import generateRoles from '../../../app/openAI/sendRoles-2.jsx';
+import { useRouter } from 'next/navigation'
 
 const FormComponent: React.FC = () => {
-  const [inputValue1, setInputValue1] = useState('');
-  const [inputValue2, setInputValue2] = useState('');
+    const router = useRouter()
+    const [inputValue1, setInputValue1] = useState('');
+    const [inputValue2, setInputValue2] = useState('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(inputValue1);
     console.log(inputValue2);
+
+    // Save the data to local storage
+   
+    const data = await generateRoles(inputValue1, inputValue2)
+    console.log(data);
+
+    //upload to open ai
+    localStorage.setItem('myKey', JSON.stringify(data));
+
+    router.push('/3-show_roles');
+
   };
 
   const handleInputChange1 = (value: string) => {
@@ -29,9 +43,7 @@ const FormComponent: React.FC = () => {
         </h1>
 
       <button type="submit" className="mt-24 px-4">
-        <Link href="/3-show_roles">
             <ContinueButton number = "2" />
-        </Link>
       </button>
     </form>
   );

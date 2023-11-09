@@ -6,11 +6,14 @@ import SkillSyncLogo from '@/components/skillsyncLogo';
 import FeatureText from '@/components/featureStills';
 import Link from 'next/link'
 import HeroText from '@/components/heroText';
+import { useRouter } from 'next/navigation';
 
 // Import Firebase Analytics to initialize it (if you're going to use it)
 import { analytics } from '@/lib/firebase'; // Adjust the path to where your firebase.js file is located
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <> 
       <div className="flex flex-col items-center justify-center">
@@ -23,9 +26,9 @@ export default function Home() {
         <HeroText/>
         <div className="my-3"></div>
 
-        <Link href="/2-role_input" passHref>
+        <button type="button" onClick={() => router.push('/2-role_input')}>
             <ContinueButton number="1" />
-        </Link>
+        </button>
 
         <div className = "flex flex-row items-center mt-24 lg:px-32" >
           <FeatureText/>
