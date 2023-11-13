@@ -35,6 +35,7 @@ export default function Home() {
         </div>
 
         <div className="my-24"></div>
+        <div className='color-black'>Made with love by EECS 497 KTP</div>
 
       </div>
     </>

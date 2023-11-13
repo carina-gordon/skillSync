@@ -38,7 +38,7 @@ const FormComponent: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className='flex flex-col items-center'>
         <h1 className="font-neue-haas font-normal tracking-wide text-gray-800 text-3xl leading-tight">
-            I'm a <span><CustomInput value={inputValue1} onInputChange={handleInputChange1}/>
+            Im a <span><CustomInput value={inputValue1} onInputChange={handleInputChange1}/>
             </span> looking to transition into <span><CustomInput value={inputValue2} onInputChange={handleInputChange2} /></span>
         </h1>
 
