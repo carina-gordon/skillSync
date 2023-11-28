@@ -4,7 +4,7 @@ import Image from 'next/image'
 import ContinueButton from '@/components/ContinueButton';
 import Link from 'next/link'
 
-export default function RoleInput() {
+export default function DownloadResume() {
 
   return (
     <div>

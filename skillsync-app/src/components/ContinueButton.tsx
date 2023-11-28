@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Make sure you need navigation, otherwise remove this line
+// import { useNavigate } from 'react-router-dom'; // Make sure you need navigation, otherwise remove this line
 
 interface ButtonProps {
   number: string;
