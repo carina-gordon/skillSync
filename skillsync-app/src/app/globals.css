@@ -10,18 +10,37 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: 248, 249, 250;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
 }
 
+/* styles/globals.css */
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/NeueHaasDisplay-Roman.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/NeueHaasDisplay-Mediu.9f5986f7.ttf') format('truetype');
+}
+
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+h1 {
+  color: #000;
+  font-family: Neue Haas Grotesk Display Pro;
+  font-size: 24.928px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
