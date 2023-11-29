@@ -15,7 +15,7 @@ const ContinueButton = ({ number }: ButtonProps) => {
         Continue
       </button>
       <span className="text-gray-700 tracking-wide font-neue-haas font-normal">
-        Step {number} of 5
+        Step {number} of 6
       </span>
     </div>
   );

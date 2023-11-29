@@ -14,7 +14,6 @@ export default function ShowRoles() {
         <SkillSyncLogo size='medium' />
       </div>
       <div className="flex flex-col items-center justify-center h-screen relative">
-
         <div className="flex flex-col items-center relative">
         <div className="text-sm text-gray-500 mb-2">🌟 click on a role to switch to it</div>
           <HeaderText text='Have you also thought about these roles?' size='large' />

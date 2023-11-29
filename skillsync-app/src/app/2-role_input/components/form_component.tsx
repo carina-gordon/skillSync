@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CustomInput from './input';
 import Link from 'next/link';
 import ContinueButton from '@/components/ContinueButton';
-import generateRoles from '../../../app/openAI/sendRoles-2.jsx';
+//import generateRoles from '../../../app/openAI/sendRoles-2.jsx';
 import { useRouter } from 'next/navigation'
 
 const FormComponent: React.FC = () => {
@@ -17,13 +17,13 @@ const FormComponent: React.FC = () => {
 
     // Save the data to local storage
    
-    const data = await generateRoles(inputValue1, inputValue2)
-    console.log(data);
+    // const data = await generateRoles(inputValue1, inputValue2)
+    // console.log(data);
 
-    //upload to open ai
-    localStorage.setItem('myKey', JSON.stringify(data));
+    // //upload to open ai
+    // localStorage.setItem('myKey', JSON.stringify(data));
 
-    router.push('/3-show_roles');
+    // router.push('/3-show_roles');
 
   };
 
@@ -38,13 +38,11 @@ const FormComponent: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className='flex flex-col items-center'>
         <h1 className="font-neue-haas font-normal tracking-wide text-gray-800 text-3xl leading-tight">
-            Im a <span><CustomInput value={inputValue1} onInputChange={handleInputChange1}/>
+            I'm a <span><CustomInput value={inputValue1} onInputChange={handleInputChange1}/>
             </span> looking to transition into <span><CustomInput value={inputValue2} onInputChange={handleInputChange2} /></span>
         </h1>
 
-      <button type="submit" className="mt-24 px-4">
-            <ContinueButton number = "2" />
-      </button>
+      
     </form>
   );
 };

@@ -19,7 +19,7 @@ const RoleButton = ({ buttonText, additionalInfo }: RoleButtonProps) => {
         {buttonText}
       </button>
       {isHovered && (
-        <div className="absolute top-0 left-0 bg-white text-black p-2 mt-8 border border-gray-300 rounded">
+        <div className="absolute top-0 left-0 bg-white text-black text-center p-2 mt-8 border border-gray-300 rounded">
           {additionalInfo}
         </div>
       )}
