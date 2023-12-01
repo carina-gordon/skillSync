@@ -8,7 +8,7 @@ import FormComponent from './components/form_component';
 import SkillSyncLogo from '@/components/skillsyncLogo';
 import { useRouter } from "next/navigation";
 
-export default function inputYourRole() {
+export default function InputYourRole() {
   const router = useRouter()
 
   return (
@@ -21,10 +21,6 @@ export default function inputYourRole() {
         <div className="my-4"></div>
         <FormComponent />
       </div>
-
-      <button type="button" onClick={() => router.push("/3-show_roles")}>
-        <ContinueButton number="2" />
-      </button>
     </div>
   );
 }

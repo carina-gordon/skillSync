@@ -18,7 +18,7 @@ export default function ShowRoles() {
         <div className="text-sm text-gray-500 mb-2">🌟 click on a role to switch to it</div>
           <HeaderText text='Have you also thought about these roles?' size='large' />
           <button className="bg-white text-black py-2 px-4 border rounded mt-4">
-            I'd like to keep my current role
+            I&apos;d like to keep my current role
           </button>
           <div className="mt-12">
             <Link href="/4-experiences">
