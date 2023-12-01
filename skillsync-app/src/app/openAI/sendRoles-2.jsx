@@ -16,7 +16,10 @@ async function generateRoles(currentRole, desiredRole) {
         desiredRole: desiredRole
       })
     });
+
+  
     var data = await response.json();
+    
   } catch (error) {
     console.log(error);
     return error;

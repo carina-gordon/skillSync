@@ -21,9 +21,14 @@ const FormComponent: React.FC = () => {
     try {
       console.log('Sending to Skillsync SSR');
       const data = await generateRoles(inputValue1, inputValue2)
-      console.log('data');
-      console.log(data);  
-    
+
+      /*
+      Data is in the format of:
+      {
+      "roles": "{\n  \"roles\": [\n    {\"1\": \"Data Analyst\"},\n    {\"2\": \"Digital Marketer\"},\n    {\"3\": \"UX/UI Designer\"},\n    {\"4\": \"Software Developer\"},\n    {\"5\": \"Project Manager\"},\n    {\"6\": \"Business Analyst\"},\n    {\"7\": \"Sales Representative\"},\n    {\"8\": \"Graphic Designer\"},\n    {\"9\": \"Content Writer\"},\n    {\"10\": \"Human Resources Specialist\"}\n  ]\n}"
+      }
+
+      */
       localStorage.setItem('myKey', JSON.stringify(data));
       router.push('/3-show_roles');
     } catch (error) {
