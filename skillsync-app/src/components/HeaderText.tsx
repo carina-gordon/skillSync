@@ -28,8 +28,8 @@ const sizes = {
 };
 
 interface HeaderTextProps {
-  size?: Size; // Use the Size type here
-  text?: string; // Make sure to include this prop for usage
+  size?: Size;
+  text?: string;
 }
 
 // Destructure both size and text from the props

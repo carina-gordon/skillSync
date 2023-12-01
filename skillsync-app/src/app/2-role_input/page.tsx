@@ -6,7 +6,7 @@ import Link from 'next/link'
 import HeaderText from '@/components/HeaderText';
 import FormComponent from './components/form_component';
 import SkillSyncLogo from '@/components/skillsyncLogo';
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function inputYourRole() {
   const router = useRouter()

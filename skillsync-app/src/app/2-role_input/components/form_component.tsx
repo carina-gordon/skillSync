@@ -17,13 +17,13 @@ const FormComponent: React.FC = () => {
 
     // Save the data to local storage
    
-    // const data = await generateRoles(inputValue1, inputValue2)
-    // console.log(data);
+    const data = await generateRoles(inputValue1, inputValue2)
+    console.log(data);
 
-    // //upload to open ai
-    // localStorage.setItem('myKey', JSON.stringify(data));
+    //upload to open ai
+    localStorage.setItem('myKey', JSON.stringify(data));
 
-    // router.push('/3-show_roles');
+    router.push('/3-show_roles');
 
   };
 
