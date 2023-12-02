@@ -4,20 +4,36 @@ import Link from 'next/link';
 import ContinueButton from '@/components/ContinueButton';
 import generateRoles from '../../../app/openAI/sendRoles-2.jsx';
 import { useRouter } from 'next/navigation'
+import LoadingIndicator from '@/components/loadingIndicator';
+import Toast from '@/components/toast';
+import { useEffect } from 'react';
 
 const FormComponent: React.FC = () => {
-    const router = useRouter()
-    const [inputValue1, setInputValue1] = useState('');
-    const [inputValue2, setInputValue2] = useState('');
+  const router = useRouter()
+  const [inputValue1, setInputValue1] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  const showToast = ({ message }: { message: string }) => {
+    setToastMessage(message);
+    setTimeout(() => setToastMessage(''), 5000);
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (inputValue1 === '' || inputValue2 === '') {
+      showToast({ message: 'Please enter both roles' });
+      return;
+    }
+
+    setLoading(true);
+    // print state of loading
     console.log(inputValue1);
     console.log(inputValue2);
 
     // Save the data to local storage
     
-
     try {
       console.log('Sending to Skillsync SSR');
       const data = await generateRoles(inputValue1, inputValue2)
@@ -31,9 +47,10 @@ const FormComponent: React.FC = () => {
       */
       localStorage.setItem('myKey', JSON.stringify(data));
       router.push('/3-show_roles');
-    } catch (error) {
-      console.log('data is undefined');
-      console.log(error);
+    } catch (error: any) {
+      showToast({ message: 'An error occurred: ' + error.message });
+    } finally {
+      setLoading(false);
     }
     
   };
@@ -56,6 +73,8 @@ const FormComponent: React.FC = () => {
         <button type="submit">
             <ContinueButton number="2" />
         </button>
+        {loading && <LoadingIndicator />}
+        <Toast message={toastMessage} />
     </form>
   );
 };
