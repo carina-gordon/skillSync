@@ -9,12 +9,21 @@ import { useEffect } from 'react';
 import RoleButton from './components/RoleButton';
 import useChatStore from '../provider/chatstore';
 import { SuggestedRoleData } from '../provider/chatstore'; 
+import { useState } from 'react';
 
 export default function ShowRoles() {
+
+  const [selectedRole, setSelectedRole] = useState('');
+
+  const handleRoleClick = (roleName: string) => {
+    setSelectedRole(roleName);
+  };
+
 
   const suggestedRoleData = useChatStore((state) => state.suggestedRoleData);
   const rolesData = suggestedRoleData as SuggestedRoleData | null;
 
+  
 
   console.log('here is the rolesData');
   console.log(rolesData);
@@ -37,14 +46,14 @@ export default function ShowRoles() {
       </div>
       <div className="flex flex-col items-center justify-center h-screen relative">
         <div className="flex flex-col items-center relative">
-        <div className="text-sm text-gray-500 mb-2">🌟 click on a role to switch to it</div>
+        <div className="text-sm text-gray-500 mb-4">🌟 click on a role to switch to it</div>
           <HeaderText text='Have you also thought about these roles?' size='large' />
-          <button className="bg-white text-black py-2 px-4 border rounded mt-4">
-            I&apos;d like to keep my current role
-          </button>
-          <div className="mt-12">
+         
+          <div className="mt-4">
             <Link href="/4-experiences">
-              <ContinueButton number="3" />
+              <button className="bg-white text-black py-2 px-4 border rounded mt-4">
+                I&apos;d like to keep my current role
+              </button>
             </Link>
           </div>
         </div>
@@ -58,8 +67,9 @@ export default function ShowRoles() {
               key={index} 
               className="absolute" 
               style={{ top: position.top, left: position.left }}
+              onClick={() => handleRoleClick(role.role_name)}
             >
-              <RoleButton buttonText={role.role_name} additionalInfo={role.description} />
+              <RoleButton buttonText={role.role_name} additionalInfo={role.description} isSelected={selectedRole === role.role_name}/>
             </div>
           );
         })}
