@@ -2,29 +2,47 @@ import React, { useState } from 'react';
 import CustomInput from './input';
 import Link from 'next/link';
 import ContinueButton from '@/components/ContinueButton';
-import generateRoles from '../../../app/openAI/sendRoles-2.jsx';
 import { useRouter } from 'next/navigation'
 import LoadingIndicator from '@/components/loadingIndicator';
 import Toast from '@/components/toast';
 import { useEffect } from 'react';
 import { useChat } from 'ai/react';
+import useChatStore from '../../provider/chatstore';
+import convertStringToJson from '../../utilities/string_to_json';
 
 const FormComponent: React.FC = () => {
   const router = useRouter()
+  const { setSuggestedRoleData } = useChatStore(); // Zustand store hook
+
   const [role1, setrole1] = useState('');
   const [role2, setrole2] = useState('');
   const [toastMessage, setToastMessage] = useState('');
 
   const {isLoading, data, handleSubmit: chatHandleSubmit, setInput} = useChat({
     onFinish: (data) => {
-      console.log(data);
-      localStorage.setItem('myKey', JSON.stringify(data));
+
+      console.log('1) Raw Data');
+      console.log(data.content);
+
+      const conversion = convertStringToJson(data.content);
+      
+      if (conversion === null) {
+        console.log('Error converting string to JSON');
+        showToast({ message: 'An error occured, try submitting again' });
+        return;
+      }
+
+      setSuggestedRoleData(conversion);
+      console.log('2) Data in provider/chatstore.tsx');
+      console.log(useChatStore.getState().suggestedRoleData);
+
       router.push('/3-show_roles');
     },
     onError: (error) => {
       console.log(error);
       showToast({ message: 'An error occurred: ' + error });
     },
+    body: {response_format: { type: "json_object" }},
   });
 
   const showToast = ({ message }: { message: string }) => {
@@ -47,17 +65,6 @@ const FormComponent: React.FC = () => {
     setInput(`You are a professional recommender for job retraining. Your task is to suggest alternative job roles for a client who is currently employed and seeking a career transition. Provide a list of 7 suitable job roles and a 1 line role description. Present this information in a JSON format with the structure: { roles: [{ role_name: role name, description: insert one line role description}] }. Respond only with the JSON file content and refrain from additional commentary. Your Client: "  I am a ${role1} and I am interested in transitioning to ${role2}`)
     chatHandleSubmit(event);
     console.log('Sent to Skillsync ChatFunction');
-
-
-    /*
-    Data is in the format of:
-    {
-    "roles": "{\n  \"roles\": [\n    {\"1\": \"Data Analyst\"},\n    {\"2\": \"Digital Marketer\"},\n    {\"3\": \"UX/UI Designer\"},\n    {\"4\": \"Software Developer\"},\n    {\"5\": \"Project Manager\"},\n    {\"6\": \"Business Analyst\"},\n    {\"7\": \"Sales Representative\"},\n    {\"8\": \"Graphic Designer\"},\n    {\"9\": \"Content Writer\"},\n    {\"10\": \"Human Resources Specialist\"}\n  ]\n}"
-    }
-
-    TODO: Implement state management with Z
-
-    */
     
   };
   
@@ -75,7 +82,7 @@ const FormComponent: React.FC = () => {
             I&apos;m a <span><CustomInput value={role1} onInputChange={handleInputChange1}/>
             </span> looking to transition into <span><CustomInput value={role2} onInputChange={handleInputChange2} /></span>
         </h1>
-        <button type="submit">
+        <button type="submit" disabled={isLoading} className={`${isLoading ? 'bg-gray-300' : 'bg-blue-500'} ...`}>
             <ContinueButton number="2" />
         </button>
         {isLoading && <LoadingIndicator />}
