@@ -1,4 +1,4 @@
-import styles from './loadingIndicator.module.css';
+import styles from './LoadingIndicator.module.css';
 import React from 'react';
 
 const LoadingIndicator = () => (

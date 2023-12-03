@@ -1,8 +1,6 @@
 import OpenAI from "openai";
 import axios from 'axios';
 
-import { OpenAIStream } from "./openaistream";
-
 export const config = {
   runtime: "edge",
 };
@@ -47,12 +45,12 @@ export default async function generateRoles(req: { method: string; body: { curre
       model: "gpt-3.5-turbo",
     };
 
-    const stream = await OpenAIStream(payload);
+    // const stream = await OpenAIStream(payload);
 
-    const roles = stream.choices[0].message.content; 
+    // const roles = stream.choices[0].message.content; 
 
     // Send the response back to our dynamic site
-    return new Response(JSON.stringify({ roles }), { status: 200, headers });
+    // return new Response(JSON.stringify({ roles }), { status: 200, headers });
   }
   catch (err) {
     return new Response(JSON.stringify({ message: 'An error occurred' }), { status: 500, headers });
