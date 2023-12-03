@@ -44,7 +44,7 @@ const FormComponent: React.FC = () => {
 
     console.log('Sending to Skillsync ChatFunction');
 
-    setInput(`You are a professional recommender for job retraining. Your task is to suggest alternative job roles for a client who is currently employed and seeking a career transition. Provide a list of 7 suitable job roles. Present this information in a JSON format with the structure: { roles: [{ role_number: role name }] }. Respond only with the JSON file content and refrain from additional commentary. Your Client: "  I am a ${role1} and I am interested in transitioning to ${role2}`)
+    setInput(`You are a professional recommender for job retraining. Your task is to suggest alternative job roles for a client who is currently employed and seeking a career transition. Provide a list of 7 suitable job roles and a 1 line role description. Present this information in a JSON format with the structure: { roles: [{ role_name: role name, description: insert one line role description}] }. Respond only with the JSON file content and refrain from additional commentary. Your Client: "  I am a ${role1} and I am interested in transitioning to ${role2}`)
     chatHandleSubmit(event);
     console.log('Sent to Skillsync ChatFunction');
 

@@ -3,19 +3,17 @@ import { OpenAIStream, StreamingTextResponse } from 'ai';
  
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  organization: 'org-nvZm2dJgBrAvAVx0ca1pxycE',
 });
  
 export const runtime = 'edge';
  
 export default async function POST(req: Request) {
-  const { prompt } = await req.json();
-
-  // Create a completion using OpenAI
-  const response = await openai.completions.create({
+  const { messages } = await req.json();
+  // Create a chat completion using OpenAI
+  const response = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
     stream: true,
-    prompt,
+    messages,
   });
  
   // Transform the response into a readable stream
