@@ -27,8 +27,9 @@ const FormComponent: React.FC = () => {
       return;
     }
 
-    setLoading(true);
-    // print state of loading
+    const {message, error, isLoading, }
+
+
     console.log(inputValue1);
     console.log(inputValue2);
 
@@ -43,6 +44,8 @@ const FormComponent: React.FC = () => {
       {
       "roles": "{\n  \"roles\": [\n    {\"1\": \"Data Analyst\"},\n    {\"2\": \"Digital Marketer\"},\n    {\"3\": \"UX/UI Designer\"},\n    {\"4\": \"Software Developer\"},\n    {\"5\": \"Project Manager\"},\n    {\"6\": \"Business Analyst\"},\n    {\"7\": \"Sales Representative\"},\n    {\"8\": \"Graphic Designer\"},\n    {\"9\": \"Content Writer\"},\n    {\"10\": \"Human Resources Specialist\"}\n  ]\n}"
       }
+
+      TODO: Implement state management with Z
 
       */
       localStorage.setItem('myKey', JSON.stringify(data));

@@ -6,7 +6,7 @@ async function generateRoles(currentRole, desiredRole) {
   console.log('desiredRole: ', desiredRole);
 
   try {
-    const response = await fetch('https://skillsync-serverside.vercel.app/api/generate', {
+    const response = await fetch('https://skillsync-serverside.vercel.app/api/generate_stream', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
