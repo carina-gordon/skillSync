@@ -7,12 +7,17 @@ import LoadingIndicator from '@/components/loadingIndicator';
 import Toast from '@/components/toast';
 import { useEffect } from 'react';
 import { useChat } from 'ai/react';
-import useChatStore from '../../provider/chatstore';
+import useChatStore from '../../provider/chat/chatstore';
 import convertStringToJson from '../../utilities/string_to_json';
+
+export interface Role {
+  role_name: string;
+  description: string;
+}
 
 const FormComponent: React.FC = () => {
   const router = useRouter()
-  const { setSuggestedRoleData } = useChatStore(); // Zustand store hook
+  const { setSuggestedRolesData, setSelectedRole } = useChatStore(); // Zustand store hook
 
   const [role1, setrole1] = useState('');
   const [role2, setrole2] = useState('');
@@ -32,9 +37,20 @@ const FormComponent: React.FC = () => {
         return;
       }
 
-      setSuggestedRoleData(conversion);
+      setSuggestedRolesData(conversion);
+
+      const selectedRole: Role = {
+        role_name: role2,
+        description: '' 
+      };
+
+      setSelectedRole(selectedRole);
+      
       console.log('2) Data in provider/chatstore.tsx');
-      console.log(useChatStore.getState().suggestedRoleData);
+      console.log(useChatStore.getState().SuggestedRolesData);
+
+      // TODO: Set selected role to desired role
+    
 
       router.push('/3-show_roles');
     },

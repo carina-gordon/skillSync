@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import useChatStore from '../../provider/chatstore';
+import useChatStore from '../../provider/chat/chatstore';
 
-const RoleButton = ({ buttonText, additionalInfo, isSelected }: RoleButtonProps) => {
+const RoleButton = ({ buttonText, additionalInfo }: RoleButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const { setSelectedRole } = useChatStore(state => ({
     setSelectedRole: state.setSelectedRole
@@ -11,14 +11,14 @@ const RoleButton = ({ buttonText, additionalInfo, isSelected }: RoleButtonProps)
     setSelectedRole({ role_name: buttonText, description: additionalInfo });
   };
 
+
   return (
     <div className="relative inline-block">
       <button
-        className={`bg-customGreen text-white tracking-wide font-neue-haas font-normal py-2 px-7 transition duration-150 ease-in-out hover:outline-green-600 focus:ring-green-700 focus:ring-opacity-50 ${isSelected ? 'new-click-class' : ''}`}
-        style={{ borderRadius: '0.5rem', backgroundColor: isSelected ? '#4F8A10' : '' }} // Change backgroundColor based on isClicked
+        className={`bg-customGreen text-white tracking-wide font-neue-haas font-normal py-2 px-7 transition duration-150 ease-in-out hover:outline-green-600 focus:ring-green-700 focus:ring-opacity-50`}
+        style={{ borderRadius: '0.5rem' }} // Change backgroundColor based on isClicked
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={handleClick}
       >
         {buttonText}
       </button>

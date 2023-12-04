@@ -35,7 +35,7 @@ export default async function generateRoles(req: { method: string; body: { curre
       messages: [
         { 
           role: "system", 
-          content: "You are a professional recommender for job retraining. Your task is to suggest alternative job roles for a client who is currently employed and seeking a career transition. Provide a list of 10 suitable job roles, each accompanied by a brief one-line description. Present this information in a JSON format with the structure: { roles: [{ role_number: 'role name', description: 'short description' }] }. Respond only with the JSON file content and refrain from additional commentary." 
+          content: "You are a professional recommender for job retraining. Your task is to suggest alternative job roles for a client who is currently employed and seeking a career transition. Provide a list of 10 suitable job roles that could map well to their current role, each accompanied by a brief one-line description. Present this information in a JSON format with the structure: { roles: [{ role_number: 'role name', description: 'short description' }] }. Respond only with the JSON file content and refrain from additional commentary." 
         },
         {
           role: "user",
