@@ -9,6 +9,7 @@ const useEducationData = () => {
   const [formatted, setFormatted] = useState("");
   
   console.log('In sendProfileData');
+  console.log(localExperiences);
   const content = {
     College: localExperiences[0].points[0],
     Major: localExperiences[0].points[1],
