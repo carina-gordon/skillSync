@@ -120,8 +120,8 @@ export default function ShowRoles() {
       {rolesData?.roles.map((role, index) => {
           const position = positions[index]; // Get the position for this index
           return (
-            <form onSubmit ={handleRoleClick}>
-              <button 
+            <form onSubmit={handleRoleClick} key={index}>
+            <button 
                 type = "submit"
                 key={index} 
                 className="absolute" 

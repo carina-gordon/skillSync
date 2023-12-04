@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import useChatStore from '../../provider/chat/chatstore';
 
+interface RoleButtonProps {
+  buttonText: string;
+  additionalInfo: string;
+}
+
 const RoleButton = ({ buttonText, additionalInfo }: RoleButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const { setSelectedRole } = useChatStore(state => ({
