@@ -20,6 +20,7 @@ export interface Role {
   //  state structure chat store
   export interface ChatStoreState {
     SuggestedRolesData: SuggestedRolesData | null;
+    currentRole: Role | null;
     selectedRole: Role | null;
     tipsData: tipsData | null;
   }
@@ -27,6 +28,7 @@ export interface Role {
   // actions available in chat store
   export interface ChatStoreActions {
     setSuggestedRolesData: (data: SuggestedRolesData) => void;
+    setCurrentRole: (role: Role) => void;
     setSelectedRole: (role: Role) => void;
     setTipsData: (data: tipsData) => void;
   }

@@ -5,6 +5,8 @@ import ContinueButton from '@/components/ContinueButton';
 import Link from 'next/link'
 import SkillSyncLogo from "@/components/skillsyncLogo";
 import { useEffect } from 'react';
+import ExperienceStore from '../provider/experiences/experiences';
+import useChatStore from '../provider/chat/chatstore';
 
 export default function DownloadResume() {
   /*
@@ -29,7 +31,16 @@ export default function DownloadResume() {
   */
 
   useEffect(() => {
+    ExperienceStore();
+    useChatStore();
+
+    console.log("Fetching all chat data");
+    const desiredRole = useChatStore((state) => state.selectedRole);
+    const currentRole = useChatStore((state) => state.currentRole);
     
+
+    console.log("Fetching all experiences");
+    const localExperiences = ExperienceStore((state) => state.experiences);
 
   }, []);
   

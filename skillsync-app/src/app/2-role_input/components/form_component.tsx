@@ -17,7 +17,7 @@ export interface Role {
 
 const FormComponent: React.FC = () => {
   const router = useRouter()
-  const { setSuggestedRolesData, setSelectedRole } = useChatStore(); // Zustand store hook
+  const { setSuggestedRolesData, setCurrentRole, setSelectedRole } = useChatStore(); // Zustand store hook
 
   const [role1, setrole1] = useState('');
   const [role2, setrole2] = useState('');
@@ -39,11 +39,19 @@ const FormComponent: React.FC = () => {
 
       setSuggestedRolesData(conversion);
 
+
+      const currentRole: Role = {
+        role_name: role1,
+        description: '' 
+      };
+
       const selectedRole: Role = {
         role_name: role2,
         description: '' 
       };
 
+
+      setCurrentRole(currentRole);
       setSelectedRole(selectedRole);
       
       console.log('2) Data in provider/chatstore.tsx');
