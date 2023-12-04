@@ -10,6 +10,9 @@ import useChatStore from '../provider/chat/chatstore';
 import sendProfileData from './utils/header_util';
 import ResumeStore from '../provider/resume/resume_data';
 import importData from './utils/import_util';
+import useExperienceData from './utils/exprerience_util';
+import useEducationData from './utils/education_util';
+import useSkillData from './utils/skills_util';
 
 export default function DownloadResume() {
 
@@ -59,17 +62,32 @@ export default function DownloadResume() {
   const { setImports, setHeader, setEducation, setExperiences, setSkills } = ResumeStore();
   setImports(importData);
 
+  const formattedEducation = useEducationData();
+  const formattedExperiences = useExperienceData();
+  const formattedSkills = useSkillData();
+
   useEffect(() => {
 
     console.log("Sending profile data");
     const profileJSON = sendProfileData();
     setHeader(JSON.stringify(profileJSON));
 
-    console.log("Sending profile data");
-     //const profileJSON = sendProfileData();
-    setHeader(JSON.stringify(profileJSON));
+    // console.log("Sending education data");
+    // const eduJSON = sendEducationData();
+    setEducation(formattedEducation);
 
+    // console.log("Sending experiences data");
+    // const experienceJSON = sendExperienceData();
+    setExperiences(formattedExperiences);
 
+    // console.log("Sending skills data");
+    // const skillsJSON = sendExperienceData();
+    setSkills(formattedSkills);
+
+    // print all resume 
+    console.log("Printing resume");
+    console.log(ResumeStore.getState());
+    
   }, []);
   
 

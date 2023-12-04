@@ -1,13 +1,13 @@
 const sendProfileData = () => {
   console.log('In sendProfileData');
     const content = {
-      FirstName: 'John', // Replace with dynamic value
-      LastName: 'Doe', // Replace with dynamic value
-      PhoneNumber: '123-456-7890', // Replace with dynamic value
-      UserEmail: 'john.doe@example.com', // Replace with dynamic value
-      UserGithub: 'johnDoeGithub', // Replace with dynamic value
-      UserLinkedin: 'johnDoeLinkedin', // Replace with dynamic value
-      UserWebsite: 'johndoe.com', // Replace with dynamic value
+      FirstName: 'John', //  TODO: COLLECT THESE DATA POINTS
+      LastName: 'Doe', // TODO: COLLECT THESE DATA POINTS
+      PhoneNumber: '123-456-7890', // TODO: COLLECT THESE DATA POINTS
+      UserEmail: 'john.doe@example.com', //  TODO: COLLECT THESE DATA POINTS
+      UserGithub: 'johnDoeGithub', // TODO: COLLECT THESE DATA POINTS
+      UserLinkedin: 'johnDoeLinkedin', // TODO: COLLECT THESE DATA POINTS
+      UserWebsite: 'johndoe.com', // TODO: COLLECT THESE DATA POINTS
     };
   
     const bodyContent = JSON.stringify({

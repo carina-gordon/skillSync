@@ -8,13 +8,13 @@ const ResumeStore = create<ResumeStore>((set) => ({
     imports: '',
     header: '',
     education: '',
-    experiences: [],
+    experiences: '',
     skills: '',
 
     setImports: (imports: string) => set({ imports: imports }),
     setHeader: (header: string) => set({ header: header }),
     setEducation: (education: string) => set({ education: education }),
-    setExperiences: (experiences: Experience[]) => set({ experiences: experiences }),
+    setExperiences: (experiences: string) => set({ experiences: experiences }),
     setSkills: (skills: string) => set({ skills: skills }),
 }));
 

@@ -27,7 +27,7 @@ export default async function POST(req: Request) {
     stream: true,
     messages: [
       // TODO: WRITE THE PROMPT ENGINEERING
-      {"role": "system", "content": "Assume you are"},
+      {"role": "system", "content": ""},
       {"role": "user", "content": content}
     ],
   });

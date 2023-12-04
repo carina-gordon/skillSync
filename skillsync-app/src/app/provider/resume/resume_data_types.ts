@@ -7,7 +7,7 @@ export interface ResumeStoreState {
   imports: string;
   header: string;
   education: string;
-  experiences: Experience[];
+  experiences: string;
   skills: string;
 }
 
@@ -18,6 +18,6 @@ export interface ResumeStoreActions {
   setImports: (imports: string) => void;
   setHeader: (header: string) => void;
   setEducation: (education: string) => void;
-  setExperiences: (experiences: Experience[]) => void;
+  setExperiences: (experiences: string) => void;
   setSkills: (skills: string) => void;
 }

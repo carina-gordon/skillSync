@@ -25,6 +25,7 @@ export default async function POST(req: Request) {
   // Create a chat completion using OpenAI
   
   const response = await openai.chat.completions.create({
+    // TODO: WRITE THE PROMPT ENGINEERING
     model: 'gpt-3.5-turbo',
     stream: true,
     messages: [{"role": "user", "content": content}],
