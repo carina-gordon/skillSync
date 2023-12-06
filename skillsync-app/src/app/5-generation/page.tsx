@@ -13,6 +13,7 @@ import useEducationData from './utils/education_util';
 import useSkillData from './utils/skills_util';
 import useProfileData from './utils/header_util';
 import { format } from 'path';
+import LoadingIndicator from '@/components/loadingIndicator';
 
 export default function DownloadResume() {
 
@@ -86,7 +87,7 @@ export default function DownloadResume() {
 
     const BASE_URL = "https://www.overleaf.com/docs?snip_uri=";
 
-    return BASE_URL + encodedResume;
+    return BASE_URL;
 
   }, [formattedEducation, formattedExperiences, formattedSkills, formattedProfile]);
 
@@ -126,7 +127,7 @@ export default function DownloadResume() {
   return (
     <div>
       {/* ...other components */}
-
+      <LoadingIndicator />
       <div className="pl-12 pt-12">
         <SkillSyncLogo size="medium" />
       </div>
