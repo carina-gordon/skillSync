@@ -58,7 +58,7 @@ export default function DownloadResume() {
   // setImports(importData);
 
   const formattedEducation = useEducationData();
-  const formattedExperiences = useExperienceData();
+  const formattedExperiences = useExperienceData(desiredRole!.role_name, currentRole!.role_name);
   const formattedSkills = useSkillData();
   const formattedProfile = useProfileData();
 

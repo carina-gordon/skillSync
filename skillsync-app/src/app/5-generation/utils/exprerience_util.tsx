@@ -3,23 +3,33 @@ import ExperienceStore from '../../provider/experiences/experiences';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const useExperienceData = () => {
+const useExperienceData = ( desiredRole: string , currentRole: string ) => {
     const localExperiences = ExperienceStore((state) => state.experiences);
+    
+
     const [formatted, setFormatted] = useState("");
 
     useEffect(() => {
-        // Using slice(1) to copy the array starting from the second element
-        const experiencesContent = localExperiences.slice(1).map(exp => {
-            return `Title: ${exp.title}\nPoints: ${exp.points.join(', ')}\n\n`;
-        }).join('');
+        // Constructing an array of experience details
+        const experiencesContent = localExperiences.map(exp => ({
+            title: exp.title,
+            points: exp.points,
+        }));
 
+        // Stringifying the content object
         const bodyContent = JSON.stringify({
-            content: experiencesContent,
-        });
-        
+            experiences: experiencesContent,
+            desired_role: desiredRole,
+            current_role: currentRole,
+          });
+                  
+
+        console.log('In sendExperienceData');
+        console.log(bodyContent);
+
         // for local testing: http://localhost:3000/api/headers
         // for production: https://skillsync-app.vercel.app/api/headers
-        fetch('http://localhost:3000/api/experience', {
+        fetch('http://localhost:3000/api/experiences', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

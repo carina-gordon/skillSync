@@ -21,16 +21,24 @@ export default async function POST(req: Request) {
   const { content } = await req.json();
 
   // Create a chat completion using OpenAI
-  
+
+  const prompt = "Assume you are a professional resume writer for individuals looking to transition from \${current_role} to \${desired_role}. Your task is to generate LaTeX code for a resume section that highlights the individual's experience relevant to their desired job. Essentially map relevant points from their old job into industry conventions for their new ones. Use the provided LaTeX template without altering its structure, ensuring optimal compatibility with LaTeX compilers. Craft high-quality bullet points following industry standards. The provided JSON object contains 'Title' and 'Points'; map 'Title' to the title in the LaTeX template, and use 'Points' for the bullet points, with each point separated by a comma. Here's the template to follow: \\resumeSubheading {Insert \"Title\" from JSON here}{Filler date} {Insert one liner about the company} {} \resumeItemListStart \resumeItem{Insert first \"point\" from JSON here.} \resumeItem{Insert additional \"points\" as needed, each as a separate \resumeItem.} \resumeItemListEnd"
+
+  console.log('here is our content', content);
+
   const response = await openai.chat.completions.create({
-    model: 'gpt-4',
+    model: 'gpt-3.5-turbo',
     stream: true,
     messages: [
-      // TODO: WRITE THE PROMPT ENGINEERING
-      {"role": "system", "content": "Assume you are"},
+      {
+        "role": "system",
+        "content": prompt
+      },
       {"role": "user", "content": content}
+      
     ],
   });
+
  
   // Transform the response into a readable stream
   const stream = OpenAIStream(response);
