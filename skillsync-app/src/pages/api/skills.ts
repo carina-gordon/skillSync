@@ -21,14 +21,15 @@ export default async function POST(req: Request) {
   const { content } = await req.json();
 
   // Create a chat completion using OpenAI
-  
+  const Body = "\\section{Skills} \\begin{itemize}[leftmargin=0.15in, label={}] \\small{\\item{ \\textbf{Engineering}{: C++, Python, Dart, HTML, CSS, Typescript, PHP} \\textbf{Design}{: User Research, Visual Design, Prototyping, Adobe XD, Figma, Sketch, Illustrator, Photoshop, InDesign.} \\textbf{Data}{: Confluence, Jira, Trello, Asana, Google Analytics, Tableau, SQL, AWS, R, MATLAB, Excel, Pytorch, NoSQL.} }} \\end{itemize}";
+
   const response = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
     stream: true,
     messages: [
       // TODO: WRITE THE PROMPT ENGINEERING
       {"role": "system", "content": ""},
-      {"role": "user", "content": content}
+      {"role": "user", "content": Body}
     ],
   });
  

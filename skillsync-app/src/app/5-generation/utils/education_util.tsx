@@ -42,7 +42,7 @@ const useEducationData = () => {
       },
       body: bodyContent,
     })
-    .then((res) => res.json())
+    .then((res) => res.text())
     .then((data) => {
       console.log('Got /api/education', data);
       setFormatted(data);

@@ -11,7 +11,7 @@ const useExperienceData = ( desiredRole: string , currentRole: string ) => {
 
     useEffect(() => {
         // Constructing an array of experience details
-        const experiencesContent = localExperiences.map(exp => ({
+        const experiencesContent = localExperiences.slice(1).map(exp => ({
             title: exp.title,
             points: exp.points,
         }));
@@ -36,7 +36,7 @@ const useExperienceData = ( desiredRole: string , currentRole: string ) => {
             },
             body: bodyContent,
         })
-        .then((res) => res.json())
+        .then((res) => res.text())
         .then((data) => {
             console.log('Got /api/experiences', data);
             setFormatted(data);

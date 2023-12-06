@@ -27,7 +27,7 @@ export default async function POST(req: Request) {
     stream: true,
     messages: [
       // TODO: WRITE THE PROMPT ENGINEERING
-      {"role": "system", "content": "Assume you are"},
+      {"role": "system", "content": "Assume you are a personal career coach. Return this latex file exactly as it is, but ensure the information is relevant and formatted."},
       {"role": "user", "content": content}
     ],
   });

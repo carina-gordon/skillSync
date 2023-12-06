@@ -63,14 +63,21 @@ export default function DownloadResume() {
   const formattedSkills = useSkillData();
   const formattedProfile = useProfileData();
 
+  const چہنست = {
+    "name": "John Doe",
+    "email": "yuh"
+  }
+
+  console.log(چہنست);
+
   // concatenate all formatted variables into a useMemo
   const overleafURL = useMemo(() => {
     const formattedResume = [
       importData,
+      formattedProfile,
       formattedEducation,
       formattedExperiences,
       formattedSkills,
-      formattedProfile,
     ].join("\n");
 
     console.log(formattedResume);

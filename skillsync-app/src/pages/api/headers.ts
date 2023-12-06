@@ -19,14 +19,20 @@ export default async function POST(req: Request) {
   }
   // return the body of the request
   const { content } = await req.json();
-  
+
+
   // Create a chat completion using OpenAI
   
   const response = await openai.chat.completions.create({
     // TODO: WRITE THE PROMPT ENGINEERING
     model: 'gpt-3.5-turbo',
     stream: true,
-    messages: [{"role": "user", "content": content}],
+    messages: [
+
+      {"role": "system", "content": "Assume you are a personal career coach. Return this latex file exactly as it is, but ensure the information is relevant and formatted."},
+      {"role": "user", "content": content}
+    
+    ],
   });
  
   // Transform the response into a readable stream
