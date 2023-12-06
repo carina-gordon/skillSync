@@ -1,18 +1,17 @@
 'use client'
 
-import Image from 'next/image'
 import ContinueButton from '@/components/ContinueButton';
 import Link from 'next/link'
 import SkillSyncLogo from "@/components/skillsyncLogo";
 import { useEffect } from 'react';
 import ExperienceStore from '../provider/experiences/experiences';
 import useChatStore from '../provider/chat/chatstore';
-import sendProfileData from './utils/header_util';
 import ResumeStore from '../provider/resume/resume_data';
 import importData from './utils/import_util';
 import useExperienceData from './utils/exprerience_util';
 import useEducationData from './utils/education_util';
 import useSkillData from './utils/skills_util';
+import useProfileData from './utils/header_util';
 
 export default function DownloadResume() {
 
@@ -45,51 +44,55 @@ export default function DownloadResume() {
   4. If it succeeds, continue to next step
   */
 
-  ExperienceStore();
-  useChatStore();
-  ResumeStore();
-
-  console.log("Getting data from chat store");
+  // console.log("Getting data from chat store");
   const desiredRole = useChatStore((state) => state.selectedRole);
-  console.log(desiredRole);
+  // console.log(desiredRole);
   const currentRole = useChatStore((state) => state.currentRole);
-  console.log(currentRole);
-  console.log("Getting data from experience store");
+  // console.log(currentRole);
+  // console.log("Getting data from experience store");
   const localExperiences = ExperienceStore((state) => state.experiences);
-  console.log(localExperiences);
+  // console.log(localExperiences);
 
   // Set the resume import data
-  const { setImports, setHeader, setEducation, setExperiences, setSkills } = ResumeStore();
-  setImports(importData);
+  // const { setImports, setHeader, setEducation, setExperiences, setSkills } = ResumeStore();
+  // setImports(importData);
 
   const formattedEducation = useEducationData();
   const formattedExperiences = useExperienceData();
   const formattedSkills = useSkillData();
+  const formattedProfile = useProfileData();
 
   useEffect(() => {
 
-    console.log("Sending profile data");
-    const profileJSON = sendProfileData();
-    setHeader(JSON.stringify(profileJSON));
+    console.log({
+      formattedEducation,
+      formattedExperiences,
+      formattedSkills,
+      formattedProfile,
+    });
+
+    // console.log("Sending profile data");
+    // const profileJSON = sendProfileData();
+    // setHeader(JSON.stringify(profileJSON));
 
     // console.log("Sending education data");
     // const eduJSON = sendEducationData();
-    setEducation(formattedEducation);
+    // setEducation(formattedEducation);
 
     // console.log("Sending experiences data");
     // const experienceJSON = sendExperienceData();
-    setExperiences(formattedExperiences);
+    // setExperiences(formattedExperiences);
 
     // console.log("Sending skills data");
     // const skillsJSON = sendExperienceData();
-    setSkills(formattedSkills);
+    // setSkills(formattedSkills);
 
     // print all resume 
-    console.log("Printing resume");
-    console.log(ResumeStore.getState());
+    // console.log("Printing resume");
+    // console.log(ResumeStore.getState());
+    // console.log(formattedEducation, formattedExperiences, formattedSkills);
     
   }, []);
-  
 
   return (
     <div>
@@ -100,6 +103,7 @@ export default function DownloadResume() {
       </div>
 
       <h1>Download Resume Page</h1>
+      {/* <p>{formattedEducation}</p> */}
       <Link href="/6-download_resume">
         <ContinueButton number="5" />
       </Link>

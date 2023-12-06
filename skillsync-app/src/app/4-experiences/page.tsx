@@ -39,8 +39,8 @@ export default function RoleInput() {
   };
 
  
-  console.log("here is the localExperiences");
-  console.log(localExperiences);
+  // console.log("here is the localExperiences");
+  // console.log(localExperiences);
 
   // const [experiences, setExperiences] = useState([
   //   { title: 'Experience 1', points: ['', '', ''] },

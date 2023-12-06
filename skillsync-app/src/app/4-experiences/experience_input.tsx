@@ -17,7 +17,7 @@ const ExperienceInput: React.FC<ExperienceInputProps> = ({experience, index }) =
         type="text"
         value={experience.title}
         onChange={(e) => updateTitle(index, e.target.value)}
-        className="text-lg font-bold p-2 border text-grey rounded w-full"
+        className="text-lg font-bold p-2 border rounded w-full"
       />
       {experience.points.map((point, pointIndex) => (
         <input

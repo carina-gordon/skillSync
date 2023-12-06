@@ -35,9 +35,10 @@ const useSkillData = () => {
       console.error('Error:', error);
     });
   }, []);
+  
   return formatted;
 
 };
   
-  export default useSkillData;
+export default useSkillData;
     
