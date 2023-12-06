@@ -29,7 +29,7 @@ const useExperienceData = ( desiredRole: string , currentRole: string ) => {
 
         // for local testing: http://localhost:3000/api/headers
         // for production: https://skillsync-app.vercel.app/api/headers
-        fetch('http://localhost:3000/api/experiences', {
+        fetch('/api/experiences', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,6 +38,7 @@ const useExperienceData = ( desiredRole: string , currentRole: string ) => {
         })
         .then((res) => res.json())
         .then((data) => {
+            console.log('Got /api/experiences', data);
             setFormatted(data);
         })
         .catch((error) => {

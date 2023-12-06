@@ -27,7 +27,7 @@ const useProfileData = () => {
   useEffect(() => {
     // for local testing: http://localhost:3000/api/headers
     // for production: https://skillsync-app.vercel.app/api/headers
-    fetch("http://localhost:3000/api/headers", {
+    fetch("/api/headers", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,6 +36,7 @@ const useProfileData = () => {
     })
     .then((res) => res.json())
     .then((data) => {
+      console.log("Got /api/headers", data);
       setProfile(data);
     })
     .catch((error) => {

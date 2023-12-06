@@ -19,9 +19,7 @@ export default async function POST(req: Request) {
   }
   // return the body of the request
   const { content } = await req.json();
-
-  console.log("our messages")
-  console.log(content);
+  
   // Create a chat completion using OpenAI
   
   const response = await openai.chat.completions.create({

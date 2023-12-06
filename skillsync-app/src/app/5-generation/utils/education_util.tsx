@@ -44,6 +44,7 @@ const useEducationData = () => {
     })
     .then((res) => res.json())
     .then((data) => {
+      console.log('Got /api/education', data);
       setFormatted(data);
     })
     .catch((error) => {

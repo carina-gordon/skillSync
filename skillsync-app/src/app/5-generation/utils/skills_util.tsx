@@ -20,7 +20,7 @@ const useSkillData = () => {
       
     // for local testing: http://localhost:3000/api/headers
     // for production: https://skillsync-app.vercel.app/api/headers
-    fetch('http://localhost:3000/api/skills', {
+    fetch('/api/skills', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,6 +29,7 @@ const useSkillData = () => {
     })
     .then((res) => res.json())
     .then((data) => {
+      console.log('Got /api/skills', data);
       setFormatted(data);
     })
     .catch((error) => {

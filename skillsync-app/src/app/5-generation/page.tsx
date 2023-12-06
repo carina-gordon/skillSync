@@ -3,7 +3,7 @@
 import ContinueButton from '@/components/ContinueButton';
 import Link from 'next/link'
 import SkillSyncLogo from "@/components/skillsyncLogo";
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import ExperienceStore from '../provider/experiences/experiences';
 import useChatStore from '../provider/chat/chatstore';
 import ResumeStore from '../provider/resume/resume_data';
@@ -12,6 +12,7 @@ import useExperienceData from './utils/exprerience_util';
 import useEducationData from './utils/education_util';
 import useSkillData from './utils/skills_util';
 import useProfileData from './utils/header_util';
+import { format } from 'path';
 
 export default function DownloadResume() {
 
@@ -62,37 +63,58 @@ export default function DownloadResume() {
   const formattedSkills = useSkillData();
   const formattedProfile = useProfileData();
 
-  useEffect(() => {
-
-    console.log({
+  // concatenate all formatted variables into a useMemo
+  const overleafURL = useMemo(() => {
+    const formattedResume = [
+      importData,
       formattedEducation,
       formattedExperiences,
       formattedSkills,
       formattedProfile,
-    });
+    ].join("\n");
 
-    // console.log("Sending profile data");
-    // const profileJSON = sendProfileData();
-    // setHeader(JSON.stringify(profileJSON));
+    console.log(formattedResume);
 
-    // console.log("Sending education data");
-    // const eduJSON = sendEducationData();
-    // setEducation(formattedEducation);
+    const encodedResume = `data:application/x-tex;base64,${Buffer.from(formattedResume).toString('base64')}`;
 
-    // console.log("Sending experiences data");
-    // const experienceJSON = sendExperienceData();
-    // setExperiences(formattedExperiences);
+    const BASE_URL = "https://www.overleaf.com/docs?snip_uri=";
 
-    // console.log("Sending skills data");
-    // const skillsJSON = sendExperienceData();
-    // setSkills(formattedSkills);
+    return BASE_URL + encodedResume;
 
-    // print all resume 
-    // console.log("Printing resume");
-    // console.log(ResumeStore.getState());
-    // console.log(formattedEducation, formattedExperiences, formattedSkills);
+  }, [formattedEducation, formattedExperiences, formattedSkills, formattedProfile]);
+
+  // useEffect(() => {
+  //   console.log('THIS IS THE RESUME', [
+  //     formattedEducation,
+  //     formattedExperiences,
+  //     formattedSkills,
+  //     formattedProfile,
+  //   ].join("\n"));
+
+  //   // console.log("Sending profile data");
+  //   // const profileJSON = sendProfileData();
+  //   // setHeader(JSON.stringify(profileJSON));
+
+  //   // console.log("Sending education data");
+  //   // const eduJSON = sendEducationData();
+  //   // setEducation(formattedEducation);
+
+  //   // console.log("Sending experiences data");
+  //   // const experienceJSON = sendExperienceData();
+  //   // setExperiences(formattedExperiences);
+
+  //   // console.log("Sending skills data");
+  //   // const skillsJSON = sendExperienceData();
+  //   // setSkills(formattedSkills);
+
+  //   // print all resume 
+  //   // console.log("Printing resume");
+  //   // console.log(ResumeStore.getState());
+  //   // console.log(formattedEducation, formattedExperiences, formattedSkills);
     
-  }, []);
+  // }, [overleafURL]);
+
+  console.log({ overleafURL, formattedEducation, formattedExperiences, formattedSkills, formattedProfile });
 
   return (
     <div>
@@ -104,7 +126,7 @@ export default function DownloadResume() {
 
       <h1>Download Resume Page</h1>
       {/* <p>{formattedEducation}</p> */}
-      <Link href="/6-download_resume">
+      <Link href={overleafURL}>
         <ContinueButton number="5" />
       </Link>
     </div>
